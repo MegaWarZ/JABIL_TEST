@@ -1,0 +1,53 @@
+﻿<nav id="sidebar" class="sidebar">
+    <div class="sidebar-content js-simplebar">
+        <a class="sidebar-brand" href="index.html">
+            @*<img src="~/Assets/dist/img/Century Mold logo.svg" alt="" x="0px" y="0px"
+                 width="30px" height="30px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" />*@
+
+            <span class="align-middle me-3">JABIL</span>
+        </a>
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-header">
+                JABIL ALTAS
+            </li>
+
+            <li class="sidebar-item">
+                <a data-bs-target="#forms" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="plus-circle"></i>
+                    <span class="align-middle">ALTAS STORED PROCEDURE</span>
+                </a>
+                <ul id="forms" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" asp-controller="Home" asp-action="Buildings_ADD">ALTA BUILDING</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" asp-controller="Home" asp-action="Customers_ADD">ALTA CUSTOMER</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" asp-controller="Home" asp-action="PartNumbers_ADD">ALTAS PARTNUMBER</a>
+                    </li>
+                </ul>
+            </li>
+           
+            
+            <li class="sidebar-item">
+                <a data-bs-target="#pages" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                    <i class="align-middle" data-feather="layout"></i> <span class="align-middle">SCAFFOLDING</span>
+                </a>
+                <ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" asp-controller="Buildings" asp-action="Index">BUILDING</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" asp-controller="Customers" asp-action="Index">CUSTOMER</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" asp-controller="PartNumbers" asp-action="Index">PARTNUMBER</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</nav>

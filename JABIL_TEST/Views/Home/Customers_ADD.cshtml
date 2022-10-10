@@ -1,0 +1,48 @@
+﻿@model JABIL_TEST.Models.Customer
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 class="h3 mb-3">Formularios customer</h1>
+
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="alert-message">
+        <p class="mb-0">
+            <strong>JABIL ALTAS CUSTOMER</strong> rellenar formularios.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-lg-5 col-xxl-6 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <h5 class="card-title">ALTAS CUSTOMER</h5>
+                <h6 class="card-subtitle text-muted">AGREGAR</h6>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Home" asp-action="Customers_ADD">
+                    <div class="mb-3">
+                        <label>Customer</label>
+                        <input type="text" class="form-control" asp-for="Customer1">
+                        <span class="font-13 text-muted">"Customer"</span>
+                    </div>
+                    <div class="mb-3">
+                        <label>Prefix</label>
+                        <input type="text" class="form-control" asp-for="Prefix">
+                        <span class="font-13 text-muted">"Prefix"</span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Fkbuilding" class="control-label"></label>
+                        <select asp-for="Fkbuilding" class="form-control" asp-items="ViewBag.Fkbuilding"></select>
+                        <span class="font-13 text-muted">"Building"</span>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary mb-2">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

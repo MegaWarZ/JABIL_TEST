@@ -1,0 +1,44 @@
+﻿@model JABIL_TEST.Models.PartNumber
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 class="h3 mb-3">Formularios partnumber</h1>
+
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="alert-message">
+        <p class="mb-0">
+            <strong>JABIL ALTAS PARTNUMBER</strong> rellenar formularios.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-lg-5 col-xxl-6 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <h5 class="card-title">ALTAS PARTNUMBER</h5>
+                <h6 class="card-subtitle text-muted">AGREGAR</h6>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Home" asp-action="ReportExcel">
+                    <div class="mb-3">
+                        <label>Partnumber</label>
+                        <input type="text" class="form-control" asp-for="PartNumber1">
+                        <span class="font-13 text-muted">"Partnumber"</span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Fkcustomer" class="control-label"></label>
+                        <select asp-for="Fkcustomer" class="form-control" asp-items="ViewBag.Fkcustomer"></select>
+                        <span class="font-13 text-muted">"Partnumber"</span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary mb-2">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

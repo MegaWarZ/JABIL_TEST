@@ -1,0 +1,109 @@
+﻿@model IEnumerable<JABIL_TEST.Models.PartNumber>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-6 col-xl-3">
+                        <div class="mb-3">
+                            <a asp-controller="Home" asp-action="PartNumbers_ADD">
+                                <i class="align-middle fa-solid fa-plus">ALTAS</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @if (Model.Count() > 0)
+                {
+                    <table id="datatables-column-search-select-inputs" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>PK</th>
+                                <th>Partnumber</th>
+                                <th>FKCustomer</th>
+                                <th>Tools</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (PartNumber item in Model)
+                            {
+
+                                <tr>
+                                    <td>@item.PkpartNumber</td>
+                                    <td>@item.PartNumber1</td>
+                                    <td>@item.Fkcustomer</td>
+                                    <td class="table-action">
+                                        <a asp-action="Edit" asp-route-id="@item.PkpartNumber"><i class="align-middle text-warning" data-feather="edit"></i></a> 
+                                        <a asp-action="Delete" asp-route-id="@item.PkpartNumber"><i class="align-middle text-danger" data-feather="trash-2"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // DataTables with Column Search by Select Inputs
+    document.addEventListener("DOMContentLoaded", function () {
+        $('#datatables-column-search-select-inputs').DataTable({
+
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'print'
+            ],
+
+            initComplete: function () {
+                this.api().columns().every(function () {
+                    var column = this;
+                    var select = $('<select class="form-control"><option value=""></option></select>')
+                        .appendTo($(column.footer()).empty())
+                        .on('change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+                            column
+                                .search(val ? '^' + val + '$' : '', true, false)
+                                .draw();
+                        });
+                    column.data().unique().sort().each(function (d, j) {
+                        select.append('<option value="' + d + '">' + d + '</option>')
+                    });
+                });
+            }
+        });
+    });
+
+  //  document.addEventListener("DOMContentLoaded", function() {
+		//	// Datatables with Buttons
+		//	var datatablesButtons = $("#datatables-column").DataTable({
+		//		responsive: true,
+		//		lengthChange: !1,
+		//		buttons: ["copy", "print"]
+		//	});
+		//	datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)");
+		//});
+</script>
